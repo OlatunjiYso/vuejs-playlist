@@ -1,8 +1,8 @@
 <template>
   <div>
-   <app-header> </app-header>
+   <app-header v-bind:title= "title" v-on:changeTitle= "handleTitleChange($event)"> </app-header>
    <app-ninja v-bind:ninjas = "ninjas" > </app-ninja>
-   <app-footer> </app-footer>
+   <app-footer v-bind:title= "title"> </app-footer>
   
   </div>
 </template>
@@ -28,7 +28,14 @@ export default {
         { name: "Tango", speciality: "Conditionals", show: false },
         { name: "Kami", speciality: "Webpack", show: false },
         { name: "Yoshi", speciality: "Data Diggin", show: false }
-      ]
+      ],
+      title: "Quick Ninjas"
+    }
+  },
+  methods: {
+    handleTitleChange: function(newTitle) {
+      console.log(newTitle)
+      this.title = newTitle.new + newTitle.title
     }
   }
 }
