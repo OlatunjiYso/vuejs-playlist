@@ -2,8 +2,8 @@
     <div id="show-blogs">
         <h1>All Blog Articles</h1>
         <div v-for="(blog, index) in blogs" v-bind:key = "index" class="single-blog">
-            <h2>{{ blog.title }}</h2>
-            <article>{{ blog.body }}</article>
+            <h2>{{ blog.title | to-uppercase}}</h2>
+            <article>{{ blog.body | snippet }}</article>
         </div>
     </div>
 </template>
