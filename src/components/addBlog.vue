@@ -1,6 +1,6 @@
 <template>
   <div id="add-blog">
-    <h2>Add a New Blog Post</h2> <button v-on:click="submitted=false"> Show form</button>
+    <h2>Add a New Blog Post</h2>
     <form v-if = "!submitted">
       <label>Blog Title:</label>
       <input type="text" v-model.lazy="blog.title" required>
@@ -36,7 +36,7 @@
       </ul>
       <p> Author: {{blog.author}}</p>
     </div>
-    <h3 v-if = "submitted"> Post Submitted !!  </h3>
+    <h3 v-show = "submitted"> Post Submitted !!  </h3>
   </div>
 </template>
 
