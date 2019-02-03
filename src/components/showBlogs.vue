@@ -6,7 +6,7 @@
         <button v-on:click="logSearch"> log search</button>
         
         <div v-for="(blog, index) in filteredBlogs" v-bind:key = "index" class="single-blog">
-            <h2>{{ blog.title | to-uppercase}}</h2>
+            <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
             <article>{{ blog.body | snippet }}</article>
         </div>
     </div>
@@ -36,6 +36,21 @@ export default {
           return  blog.title.match(this.search)
         })
       }
+    },
+       filters: {
+        toUppercase(value){
+            return value.toUpperCase();
+        },
+        snippet(value){
+          return value.slice(0,120) + '. . . . ... .. . . . .'
+        }
+    },
+    directives: {
+        'rainbow' :{
+            bind(el, binding, vnode){
+                el.style.color = "#" + Math.random().toString(16).slice(2, 8);
+            }
+        }
     }
 }
 </script>
