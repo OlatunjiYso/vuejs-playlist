@@ -6,17 +6,18 @@
     <button v-on:click="logSearch">log search</button>
 
     <div v-for="(blog, index) in filteredBlogs" v-bind:key="index" class="single-blog">
-      <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
+      <router-link v-bind:to="'/blog/'+blog.id">
+        <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
+      </router-link>
       <article>{{ blog.body | snippet }}</article>
     </div>
   </div>
 </template>
 
 <script>
-import searchMixin from '../mixins/searchMixin';
+import searchMixin from "../mixins/searchMixin";
 
 export default {
-  
   data() {
     return {
       blogs: [],
@@ -54,7 +55,7 @@ export default {
       }
     }
   },
-  mixins: [searchMixin],
+  mixins: [searchMixin]
 };
 </script>
 
